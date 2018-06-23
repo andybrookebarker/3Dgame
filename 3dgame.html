@@ -87,17 +87,12 @@
 					}
 					if (keys.d) {
 					playerSphere.applyImpulse(right, playerSphere.getAbsolutePosition());
-					
 					}
-					var currentT = tLookup(xFn, zFn, 500, playerSphere.position.x, playerSphere.position.z); 
-						
-						if (currentT > 0.99) {
-						win();
-						} 
-						if (playerSphere.position.y < -10) {
-						lost();
-						} 
-						 }); 
+					
+					if (playerSphere.position.y < -10) {
+
+					}
+					}); 
 
 				function drawPoint(x, z, zrot, scene) {
 					var point = BABYLON.MeshBuilder.CreateBox('point', {
@@ -115,10 +110,7 @@
 					}, scene);
 				}
 
-		        arametric(xFn, zFn, 0, 1, 350, scene);
-
-			
-} 
+		        
 			  function drawParametric(xFn, zFn, start, end, res, scene) {
 			    for (var t = start; t <= end; t += ((end - start) / res)) {
 			      drawPoint(xFn(t), zFn(t), 0, scene);
@@ -126,26 +118,10 @@
 			  }
  				drawParametric(xFn, zFn, 0, 1, 350, scene); 
 
- 				function tLookup(xFn, zFn, res, x, z) {
-						var minT = 0;
-						var minDist = Infinity;
-						for (var t = 0; t <= 1; t += (1 / res)) {
-						var dist = Math.pow(x - xFn(t), 2) + Math.pow(z - zFn(t), 2);
-						if (dist < minDist) {
-						minDist = dist;
-						minT = t;
-						}
-						}
-						return minT;
-						} 
+
 				engine.runRenderLoop(scene.render.bind(scene));
 				window.addEventListener('resize', engine.resize.bind(engine)); 
 			}
-							function win(){
-				window.location.reload();
-				alert("You WIN!");
-				} 
-
 
 				function lost(){
 					window.location.reload();
